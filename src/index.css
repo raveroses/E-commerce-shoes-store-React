@@ -14,11 +14,13 @@ body {
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  padding: 10px 100px;
+  padding: 30px 100px;
 }
 
 .logoName {
   margin-right: 20px;
+  font-size: 25px;
+  font-weight: 700;
 }
 
 .navs {
@@ -34,11 +36,25 @@ body {
 }
 .navs ul li {
   float: left;
+  margin-left: 25px;
 }
-
+.navs ul li a {
+  color: hsl(219, 9%, 45%);
+  text-decoration: none;
+  text-align: center;
+  font-size: 15px;
+}
 .cart {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   align-content: flex-start;
+  cursor: pointer;
+}
+
+.image {
+  margin-left: 20px;
+}
+.image img {
+  width: 40px;
 }
