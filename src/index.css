@@ -8,13 +8,14 @@
 body {
   font-family: "Kumbh Sans", sans-serif;
 }
-
+.content-mother {
+  padding: 30px 100px;
+}
 .motherHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  padding: 30px 100px;
 }
 
 .logoName {
@@ -57,4 +58,8 @@ body {
 }
 .image img {
   width: 40px;
+}
+
+.big-image img {
+  width: 300px;
 }
