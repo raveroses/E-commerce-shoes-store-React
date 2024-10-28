@@ -13,6 +13,7 @@ const Header = () => {
   const [increase, setIncrease] = useState(0);
   const [deletes, setDeletes] = useState(true);
   const [cart, setCart] = useState(false);
+  const [cancel, setCancel] = useState(false);
 
   const handleCart = () => {
     if (increase > 0) {
@@ -41,7 +42,12 @@ const Header = () => {
     });
     return bigImage;
   };
-
+  const handleCheckOut = () => {
+    setCancel((prev) => !prev);
+  };
+  const handleCancel = () => {
+    setCancel(false);
+  };
   return (
     <>
       <div className="motherHeader">
@@ -58,7 +64,6 @@ const Header = () => {
         <h5>Cart</h5>
         <hr />
 
-        {/* <div className="empty" style={{ display: deletes ? "block" : "none" }}> */}
         <div
           className="empty"
           style={{ display: increase === 0 ? "block" : "none" }}
@@ -83,7 +88,9 @@ const Header = () => {
               <MdDelete className="ikon" />
             </div>
           </div>
-          <div className="checkOut">Checkout</div>
+          <div className="checkOut" onClick={handleCheckOut}>
+            Checkout
+          </div>
         </div>
       </div>
       <ImageDisplay
@@ -96,7 +103,11 @@ const Header = () => {
         image={image}
         handleCart={handleCart}
       />
-      <Modal />
+      <Modal cancel={cancel} handleCancel={handleCancel} />
+      <div
+        className="overlay"
+        style={{ display: cancel ? "block" : "none" }}
+      ></div>
     </>
   );
 };
@@ -162,15 +173,12 @@ function Cart({ increase }) {
   );
 }
 
-function Modal() {
+function Modal({ cancel, handleCancel }) {
   const [imageDis, setImageDis] = useState("/images/image-product-4.jpg");
   const [control, setControl] = useState(0);
-  console.log(imageDis);
-  // console.log(control);
-  console.log(bigiImage.length - 1);
 
   const big = bigiImage[control];
-  // console.log(control);
+
   const handleRightCaret = () => {
     if (control < bigiImage.length - 1) {
       setControl((prev) => prev + 1);
@@ -213,8 +221,8 @@ function Modal() {
   ));
 
   return (
-    <div className="modal">
-      <div className="cancel">
+    <div className="modal" style={{ display: cancel ? "block" : "none" }}>
+      <div className="cancels" onClick={handleCancel}>
         <FaTimes className="ikon" />
       </div>
       <div
