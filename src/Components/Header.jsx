@@ -163,10 +163,33 @@ function Cart({ increase }) {
 }
 
 function Modal() {
-  const [imageDis, setImageDis] = useState("");
+  const [imageDis, setImageDis] = useState("/images/image-product-4.jpg");
   const [control, setControl] = useState(0);
   console.log(imageDis);
-  console.log(control);
+  // console.log(control);
+  console.log(bigiImage.length - 1);
+
+  const big = bigiImage[control];
+  // console.log(control);
+  const handleRightCaret = () => {
+    if (control < bigiImage.length - 1) {
+      setControl((prev) => prev + 1);
+      setImageDis(big.image);
+    } else {
+      setControl(0);
+    }
+  };
+
+  const handleLeftCaret = () => {
+    if (control > 0) {
+      setControl((prev) => prev - 1);
+      setImageDis(big.image);
+    } else {
+      setControl(bigiImage.length - 1);
+    }
+  };
+  // console.log(big);
+
   // const bigImage = bigiImage[control].map((item) => item.image);
   // console.log(bigImage);
 
@@ -174,23 +197,20 @@ function Modal() {
     <div
       className="smallImage"
       key={item.id}
-      style={{
-        border: "1px solid red",
-        opacity: "0.5",
-        backgroundColor: "hsl(26, 100%, 55%)",
-        borderRadius: "5px",
-      }}
+      style={
+        item.id === control
+          ? {
+              border: "1px solid red",
+              opacity: "0.5",
+              backgroundColor: "hsl(26, 100%, 55%)",
+              borderRadius: "5px",
+            }
+          : {}
+      }
     >
       <img src={item.image} alt="product-image" />
     </div>
   ));
-  const handleRightCaret = () => {
-    const big = bigiImage[control];
-    if (control > 0) {
-      setControl((prev) => prev + 1);
-    }
-    console.log(big);
-  };
 
   return (
     <div className="modal">
@@ -206,11 +226,11 @@ function Modal() {
           alignItems: "center",
         }}
       >
-        <div className="leftCaret">
+        <div className="leftCaret" onClick={handleLeftCaret}>
           <FaChevronLeft />
         </div>
         <img src={imageDis} alt="big-image" />
-        <div className="rightCaret" onClick={() => handleRightCaret()}>
+        <div className="rightCaret" onClick={handleRightCaret}>
           <FaChevronRight />
         </div>
       </div>
