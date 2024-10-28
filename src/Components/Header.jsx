@@ -1,4 +1,105 @@
+// import { useState } from "react";
+import ImageDisplay from "./ImageDisplay";
+import image from "./SmallImageArray";
 import { useState } from "react";
+import bigiImage from "./BigiImageArray";
+import { MdDelete } from "react-icons/md";
+import { FaTimes } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+const Header = () => {
+  const [images, setImages] = useState("/images/image-product-1.jpg");
+  const [number, setNumber] = useState(null);
+  const [increase, setIncrease] = useState(0);
+  const [deletes, setDeletes] = useState(true);
+  const [cart, setCart] = useState(false);
+
+  const handleCart = () => {
+    if (increase > 0) {
+      setCart((c) => !c);
+    }
+  };
+
+  const handleIncrease = () => {
+    setIncrease((prev) => prev + 1);
+  };
+  const handleIDecrease = () => {
+    if (increase > 0) {
+      setIncrease((prev) => prev - 1);
+    }
+  };
+  const handleDelete = () => {
+    setDeletes((del) => !del);
+    setIncrease(0);
+  };
+  const handleImageChange = (id) => {
+    const bigImage = bigiImage.map((item) => {
+      if (item.id === id) {
+        setImages(item.image);
+        setNumber(item.id);
+      }
+    });
+    return bigImage;
+  };
+
+  return (
+    <>
+      <div className="motherHeader">
+        <Navs />
+
+        <Cart increase={increase} />
+      </div>
+      <div
+        className="price-calculation"
+        style={{
+          display: !cart ? "none" : "block",
+        }}
+      >
+        <h5>Cart</h5>
+        <hr />
+
+        {/* <div className="empty" style={{ display: deletes ? "block" : "none" }}> */}
+        <div
+          className="empty"
+          style={{ display: increase === 0 ? "block" : "none" }}
+        >
+          {" "}
+          <p>Your cart is empty</p>
+        </div>
+        {/* <div style={{ display: deletes ? "none" : "block" }}> */}
+        <div style={{ display: increase > 0 ? "block" : "none" }}>
+          <div className="goods-detail">
+            <div className="thumbnail">
+              <img src={images} alt="thumb-image" />
+            </div>
+            <div className="deet-name">
+              <h6>Fall Limited Edition Sneakers</h6>
+              <span className="pri">
+                $125.00 X {increase}{" "}
+                <span className="total"> ${(125 * increase).toFixed(2)}</span>
+              </span>
+            </div>
+            <div className="delete" onClick={handleDelete}>
+              <MdDelete className="ikon" />
+            </div>
+          </div>
+          <div className="checkOut">Checkout</div>
+        </div>
+      </div>
+      <ImageDisplay
+        handleIDecrease={handleIDecrease}
+        handleImageChange={handleImageChange}
+        handleIncrease={handleIncrease}
+        images={images}
+        number={number}
+        increase={increase}
+        image={image}
+        handleCart={handleCart}
+      />
+      <Modal />
+    </>
+  );
+};
 
 function LogoName() {
   return <div className="logoName">Titilope Sneakers</div>;
@@ -47,7 +148,7 @@ function Navs() {
     </div>
   );
 }
-function Cart() {
+function Cart({ increase }) {
   return (
     <div className="cart">
       <div className="realCart">
@@ -56,16 +157,67 @@ function Cart() {
       <div className="image">
         <img src="./images/image-avatar.png" alt="avatar-image" />
       </div>
+      <div className="cart-number">{increase}</div>
     </div>
   );
 }
 
-const Header = () => {
+function Modal() {
+  const [imageDis, setImageDis] = useState("");
+  const [control, setControl] = useState(0);
+  console.log(imageDis);
+  console.log(control);
+  // const bigImage = bigiImage[control].map((item) => item.image);
+  // console.log(bigImage);
+
+  const small = image.map((item) => (
+    <div
+      className="smallImage"
+      key={item.id}
+      style={{
+        border: "1px solid red",
+        opacity: "0.5",
+        backgroundColor: "hsl(26, 100%, 55%)",
+        borderRadius: "5px",
+      }}
+    >
+      <img src={item.image} alt="product-image" />
+    </div>
+  ));
+  const handleRightCaret = () => {
+    const big = bigiImage[control];
+    if (control > 0) {
+      setControl((prev) => prev + 1);
+    }
+    console.log(big);
+  };
+
   return (
-    <div className="motherHeader">
-      <Navs />
-      <Cart />
+    <div className="modal">
+      <div className="cancel">
+        <FaTimes className="ikon" />
+      </div>
+      <div
+        className="bigiImage"
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          alignContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div className="leftCaret">
+          <FaChevronLeft />
+        </div>
+        <img src={imageDis} alt="big-image" />
+        <div className="rightCaret" onClick={() => handleRightCaret()}>
+          <FaChevronRight />
+        </div>
+      </div>
+
+      <div className="smallFlex">{small}</div>
     </div>
   );
-};
+}
+
 export default Header;

@@ -18,6 +18,70 @@ body {
   align-content: center;
 }
 
+.price-calculation {
+  position: absolute;
+  top: 90px;
+  right: 30px;
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px lightgray;
+  width: 300px;
+  padding-top: 15px;
+}
+
+.price-calculation h5 {
+  padding-left: 20px;
+  padding-bottom: 14px;
+}
+.empty {
+  padding: 90px 70px;
+}
+.empty p {
+  font-size: 13px;
+  color: hsl(220, 14%, 75%);
+  font-weight: 600;
+}
+.goods-detail {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  gap: 13px;
+  margin-top: 40px;
+}
+.deet-name h6 {
+  font-size: 13px;
+  color: hsl(220, 14%, 75%);
+  font-weight: 500;
+}
+
+.pri {
+  font-size: 13px;
+  padding-top: 10px;
+}
+.total {
+  font-weight: 600;
+}
+.ikon {
+  font-size: 17px;
+  color: hsl(219, 9%, 45%);
+}
+.checkOut {
+  background-color: hsl(26, 100%, 55%);
+  text-align: center;
+  padding: 8px;
+  width: 250px;
+  margin: auto;
+  font-size: 14px;
+  font-weight: 550;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  border-radius: 5px;
+}
+
+.thumbnail img {
+  width: 50px;
+  border-radius: 5px;
+}
 .logoName {
   margin-right: 20px;
   font-size: 25px;
@@ -51,6 +115,14 @@ body {
   align-items: center;
   align-content: flex-start;
   cursor: pointer;
+  position: relative;
+}
+.cart-number {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  color: hsl(26, 100%, 55%);
+  font-weight: 700;
 }
 
 .image {
@@ -60,6 +132,145 @@ body {
   width: 40px;
 }
 
-.big-image img {
-  width: 300px;
+.bigiImage img {
+  width: 420px;
+  border-radius: 10px;
+}
+
+.smallFlex {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.smallFlex img {
+  width: 100px;
+  border-radius: 6px;
+}
+.cover {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: flex-start;
+  gap: 120px;
+  margin-top: 100px;
+}
+
+.written-palace {
+  margin-top: 70px;
+}
+
+.written-palace h5 {
+  font-size: 18px;
+  color: hsl(219, 9%, 45%);
+  font-weight: 550;
+}
+
+.written-palace h2 {
+  font-size: 40px;
+  font-weight: 540;
+  padding-top: 20px;
+  /* padding-right: 40px; */
+}
+
+.written-palace p {
+  font-size: 15px;
+  color: hsl(219, 9%, 45%);
+  line-height: 25px;
+  padding-right: 50px;
+  margin-top: 25px;
+}
+
+.priceFlex {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.actual-price {
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.percentage {
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  padding: 3px 10px;
+  border-radius: 5px;
+}
+
+.cancel {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: hsl(219, 9%, 45%);
+  margin-top: 9px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  margin-top: 20px;
+}
+
+.quantity-button {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  gap: 50px;
+  background-color: hsl(220, 14%, 75%);
+  border-radius: 6px;
+  padding: 10px 10px;
+}
+.num {
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.add-cart {
+  background-color: hsl(26, 100%, 55%);
+  padding: 7px 40px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.add-cart img {
+  margin-right: 20px;
+}
+
+.modal {
+  position: absolute;
+  top: 100px;
+  left: 450px;
+}
+
+.cancel {
+  margin-left: 390px;
+  margin-bottom: 30px;
+}
+
+.leftCaret {
+  background-color: white;
+  padding: 8px 10px;
+  border-radius: 50%;
+  position: absolute;
+  left: -15px;
+}
+
+.rightCaret {
+  background-color: white;
+  padding: 8px 10px;
+  border-radius: 50%;
+  position: absolute;
+  right: -15px;
 }
